@@ -1,0 +1,43 @@
+package com.stargazerproject.ui.assembly;
+
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
+import com.stargazerproject.ui.parameter.GetParamentByName;
+
+/**
+ *混合主界面布局器
+ *@Web https://github.com/pisual http://www.pisual.com
+ *@email pisual@163.com dsnsuva@163.com dsnsuva@gmail.com
+ *@author Felixerio FelixSion
+ **/
+public class MainFrameLayout {
+	
+	/**主界面控制台高度**/
+	private static final int Main_Frame_Console_Height = Integer.parseInt(GetParamentByName.GetParamentByKeyInSystemMemory("Main_Frame_Console_Height"));
+	
+	/**MainFrameLayout单例**/
+	private static MainFrameLayout mainFrameLayout = null;
+	
+	public static final MainFrameLayout getInstance(){
+		if(mainFrameLayout == null){
+			mainFrameLayout = new MainFrameLayout();
+		}
+		return mainFrameLayout;
+	}
+	
+	public MainFrameLayout() {
+	}
+	
+	public void initMainFrameLayout(JFrame jFrame,JScrollPane jScrollPane) {
+		GroupLayout layout = new GroupLayout(jFrame.getContentPane());
+		jFrame.getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			  .addComponent(jScrollPane, GroupLayout.Alignment.TRAILING,GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE));
+		layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			  .addGroup(GroupLayout.Alignment.TRAILING,layout.createSequentialGroup()
+			  .addContainerGap(265, Short.MAX_VALUE)
+			  .addComponent(jScrollPane,GroupLayout.PREFERRED_SIZE,Main_Frame_Console_Height,GroupLayout.PREFERRED_SIZE)));
+	}
+}

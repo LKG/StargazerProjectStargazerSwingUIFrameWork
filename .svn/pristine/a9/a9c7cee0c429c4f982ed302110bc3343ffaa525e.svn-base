@@ -1,0 +1,65 @@
+package com.stargazerproject.ui.assembly;
+
+import java.awt.Point;
+
+import javax.swing.ImageIcon;
+
+import com.stargazerproject.ui.listener.LogoClickListener;
+import com.stargazerproject.ui.listener.MouseAdapterListener;
+import com.stargazerproject.ui.listener.MouseMotionAdapterListener;
+import com.stargazerproject.ui.parameter.GetParamentByName;
+
+/**
+ * 混合主界面,启动界面
+ * 
+ * 通过MainFrame.baseFrame.setVisible(true) 来显示界面
+ * 
+ *@Web https://github.com/pisual http://www.pisual.com
+ *@email pisual@163.com dsnsuva@163.com dsnsuva@gmail.com
+ *@author Felixerio FelixSion
+ */
+public class MainFrame {
+	
+	/**混合主界面**/
+	private static final BaseFrame baseFrame = BaseFrame.getInstance();
+	
+	/**控制台**/
+	private static final ConsoleTextArea consoleTextArea = ConsoleTextArea.getInstance();
+	
+	/**主界面滚动条**/
+	private static final MainFrameJScrollPane jScrollPane = MainFrameJScrollPane.getInstance(consoleTextArea);
+	
+	/**操纵图标头像位置**/
+	private static final MainFrameLogoJlabel mainFrameLogoJlabel = MainFrameLogoJlabel.getInstance(new ImageIcon(GetParamentByName.GetParamentByKeyInSystemMemory("Main_Frame_Logo_Path")));
+
+	/**主界面背景**/
+	private static final MainFrameBackgroundJlabel mainFrameBackgroundJlabel = MainFrameBackgroundJlabel.getInstance(new ImageIcon(GetParamentByName.GetParamentByKeyInSystemMemory("MAIN_INTERFACE_BACKGROUND")));
+
+	/**混合主界面布局**/
+	private static final MainFrameLayout mainFrameLayout = MainFrameLayout.getInstance();
+	
+	/**主界面坐标点，用于界面拖动**/
+	private static final Point origin = new Point();
+	
+	/**主界面鼠标点击事件**/
+	private static final LogoClickListener logoClickListener = LogoClickListener.getInstance(baseFrame);
+	
+	/**获取主界面鼠标点击位置**/
+	private static final MouseAdapterListener mouseAdapterListener = MouseAdapterListener.getInstance(origin);
+	
+	/**主界面鼠标点击事件**/
+	private static final MouseMotionAdapterListener mouseMotionAdapterListener = MouseMotionAdapterListener.getInstance(origin,baseFrame);
+	
+	public MainFrame(){
+		mainFrameLayout.initMainFrameLayout(baseFrame, jScrollPane);
+		baseFrame.getLayeredPane().add(mainFrameBackgroundJlabel,new Integer(Integer.MIN_VALUE));
+		baseFrame.getLayeredPane().add(mainFrameLogoJlabel,new Integer(Integer.MIN_VALUE)+1);
+		mainFrameLogoJlabel.addMouseListener(logoClickListener);
+		mainFrameLogoJlabel.addMouseListener(mouseAdapterListener);
+		mainFrameLogoJlabel.addMouseMotionListener(mouseMotionAdapterListener);	
+	}
+	
+	public void VisualMainFrame(){
+		baseFrame.setVisible(Boolean.TRUE);
+	}
+}
