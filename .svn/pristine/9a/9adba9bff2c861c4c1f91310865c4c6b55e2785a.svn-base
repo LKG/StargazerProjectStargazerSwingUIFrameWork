@@ -1,0 +1,34 @@
+package com.stargazerproject.ui.assembly;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
+
+public class LoadingProgressInfo extends JLabel {
+	private static final long serialVersionUID = -7016844370715643376L;
+	
+	/**加载输出字符字体类型**/
+	private static final Font loadingProgressInfoFont = new Font("Copperplate", Font.BOLD, 13);
+	
+	/**控制台输出字符字体颜色**/
+	private static final Color loadingProgressInfoFontColor = Color.white;
+	
+	/**LoadingProgressInfo单例**/
+	private static LoadingProgressInfo loadingProgressInfo = null;
+	
+	public static final LoadingProgressInfo getInstance(){
+		if(loadingProgressInfo == null){
+			loadingProgressInfo = new LoadingProgressInfo();
+		}
+		return loadingProgressInfo;
+	}
+	
+	private LoadingProgressInfo() {
+	}
+	
+	public void initLoadingProgressInfo(){
+		this.setFont(loadingProgressInfoFont);
+		this.setForeground(loadingProgressInfoFontColor); 
+	}
+}

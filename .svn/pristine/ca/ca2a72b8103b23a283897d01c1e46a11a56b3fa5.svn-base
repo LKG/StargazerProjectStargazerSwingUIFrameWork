@@ -1,0 +1,36 @@
+package com.stargazerproject.ui.assembly;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+import javax.swing.JProgressBar;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+
+import com.stargazerproject.ui.parameter.GetParamentByName;
+
+/**
+ * 加载界面进度条UI
+ * 
+ *@Web https://github.com/pisual http://www.pisual.com
+ *@email pisual@163.com dsnsuva@163.com dsnsuva@gmail.com
+ *@author Felixerio FelixSion
+ */
+public class LoadingJProgressBarUI extends BasicProgressBarUI {
+	private static JProgressBar loadingframeJProgressBar;
+	
+	/**加载界面进度条 RGB色组**/
+	private static final Color Loading_Frame_ProgressBar_Color  = new Color(GetParamentByName.GetParamentByKeyInSystemMemoryTransformArray("Loading_Frame_ProgressBar_Color")[0],
+										        		   GetParamentByName.GetParamentByKeyInSystemMemoryTransformArray("Loading_Frame_ProgressBar_Color")[1],
+										        		   GetParamentByName.GetParamentByKeyInSystemMemoryTransformArray("Loading_Frame_ProgressBar_Color")[2]);
+	
+	public LoadingJProgressBarUI(JProgressBar jProgressBar) {
+		loadingframeJProgressBar = jProgressBar;
+	}
+	
+	@Override
+	protected void paintDeterminate(Graphics g, JComponent c) {
+		loadingframeJProgressBar.setForeground(Loading_Frame_ProgressBar_Color);
+		super.paintDeterminate(g, c);
+	}
+}

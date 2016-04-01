@@ -1,0 +1,20 @@
+package com.stargazerproject.ui.assembly;
+
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+import javax.swing.JProgressBar;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+
+public class GyrProgressUI extends BasicProgressBarUI{
+	private static JProgressBar loadingframeJProgressBar;
+	
+	private GyrProgressUI(JProgressBar jProgressBar) {
+		loadingframeJProgressBar = jProgressBar;
+	}
+	@Override
+	protected void paintDeterminate(Graphics g, JComponent c) {
+		loadingframeJProgressBar.setForeground(new java.awt.Color(149, 148, 148));
+		super.paintDeterminate(g, c);
+	}
+}

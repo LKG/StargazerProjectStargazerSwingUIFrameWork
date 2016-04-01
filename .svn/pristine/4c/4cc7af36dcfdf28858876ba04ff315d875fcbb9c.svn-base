@@ -1,0 +1,43 @@
+package com.stargazerproject.ui.assembly;
+
+import com.stargazerproject.ui.parameter.GetParamentByName;
+
+public class LoadingFrame {
+	
+	private static LoadingBaseFrameJDialog loadingBaseFrameJDialog = LoadingBaseFrameJDialog.getInstance();
+	
+	private static LoadingJProgressBar loadingJProgressBar = LoadingJProgressBar.getInstance();
+	
+	private static LoadingProgressInfo loadingProgressInfo = LoadingProgressInfo.getInstance();
+	
+	private static LoadingFrameBackgroundJlabel loadingFrameBackgroundJlabel = LoadingFrameBackgroundJlabel.getInstance(GetParamentByName.GetParamentByKeyInSystemMemory("LOADING_INTERFACE_BACKGROUND"));
+	
+	private static LoadingFrameLayout loadingFrameLayout = LoadingFrameLayout.getInstance();
+	
+	public LoadingFrame() {
+		loadingFrameLayout.initMainFrameLayout(loadingBaseFrameJDialog,loadingJProgressBar,loadingProgressInfo);
+		loadingBaseFrameJDialog.getLayeredPane().add(loadingFrameBackgroundJlabel, new Integer(Integer.MIN_VALUE));
+	}
+	
+	public void visualLoadingFrame(){
+		loadingBaseFrameJDialog.setVisible(Boolean.TRUE);
+	}
+	
+	public void unVisualLoadingFrame(){
+		loadingBaseFrameJDialog.setVisible(Boolean.FALSE);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void disposeLoadingFrame(){
+		loadingBaseFrameJDialog.disable();
+	}
+	
+	/**
+	 * 更新进度条
+	 * @author felixsion
+	 * **/
+    public void updateProcess(String info, int value) {  
+      	loadingProgressInfo.setText(info);  
+      	loadingJProgressBar.setValue(value);  
+    }
+}

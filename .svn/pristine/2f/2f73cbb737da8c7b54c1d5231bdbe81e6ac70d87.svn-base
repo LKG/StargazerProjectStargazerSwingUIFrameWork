@@ -1,0 +1,50 @@
+package com.stargazerproject.ui.assembly;
+
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.stargazerproject.ui.parameter.GetParamentByName;
+import com.stargazerproject.ui.util.UIUtil;
+
+/**
+ * 主要操作界面，为单独的主界面
+ * 
+ *@Web https://github.com/pisual http://www.pisual.com
+ *@email pisual@163.com dsnsuva@163.com dsnsuva@gmail.com
+ *@author Felixerio FelixSion
+ */
+public class BaseFrame extends JFrame {
+	private static final long serialVersionUID = -2355092246173538052L;
+	
+	/**界面宽度**/
+	private static final int frameSizeWidth = GetParamentByName.GetParamentByKeyInSystemMemoryTransformNormallArray("Main_Frame_Size")[0];
+	
+	/**界面高度**/
+	private static final int frameSizeHeight = GetParamentByName.GetParamentByKeyInSystemMemoryTransformNormallArray("Main_Frame_Size")[1];
+	
+	/**界面系统图标**/
+	private static final String Main_Frame_IconImage = GetParamentByName.GetParamentByKeyInSystemMemory("Main_Frame_IconImage");
+	
+	/**单例模式**/
+	private static BaseFrame baseFrame = null;
+	
+	public static final BaseFrame getInstance(){
+		if(baseFrame == null){
+			baseFrame = new BaseFrame();
+			baseFrame.initBaseFrame();
+		}
+		return BaseFrame.baseFrame;
+	}
+	
+	private BaseFrame() {
+	}
+	
+	public void initBaseFrame(){
+		((JPanel) this.getContentPane()).setOpaque(false);
+		this.setUndecorated(true);
+		this.setSize(frameSizeWidth,frameSizeHeight);
+  	    this.setIconImage(Toolkit.getDefaultToolkit().getImage(Main_Frame_IconImage));
+        UIUtil.changeFrameToCenter(this);  
+	}
+}
