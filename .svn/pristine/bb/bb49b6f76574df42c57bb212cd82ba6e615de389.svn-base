@@ -28,7 +28,7 @@ public class MainFrame {
 	/**混合主界面布局**/
 	private static MainFrameLayout mainFrameLayout;
 	/**主界面坐标点，用于界面拖动**/
-	private static Point origin = new Point();
+	private static Point origin;
 	/**主界面鼠标点击事件**/
 	private static LogoClickListener logoClickListener;
 	/**获取主界面鼠标点击位置**/
@@ -43,6 +43,7 @@ public class MainFrame {
 		mainFrameLogoJlabel = MainFrameLogoJlabel.getInstance(GetParamentByName.GetParamentByKeyInSystemMemory("Main_Frame_Logo_Path"));
 		mainFrameBackgroundJlabel = MainFrameBackgroundJlabel.getInstance(GetParamentByName.GetParamentByKeyInSystemMemory("MAIN_INTERFACE_BACKGROUND"));
 		mainFrameLayout = MainFrameLayout.getInstance();
+		origin = new Point();
 		logoClickListener = LogoClickListener.getInstance(baseFrame);
 		mouseAdapterListener = MouseAdapterListener.getInstance(origin);
 		mouseMotionAdapterListener = MouseMotionAdapterListener.getInstance(origin,baseFrame);

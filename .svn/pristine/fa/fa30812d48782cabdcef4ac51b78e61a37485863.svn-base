@@ -26,14 +26,12 @@ public class CombinationUserInterfaceStart {
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.VisualMainFrame();
 		
-		ConsoleTextPane.insertLogo();
+		ConsoleTextPane.getInstance().insertLogo();
 		
-		ConsoleTextPane.insertMessage("Stargazer System Online Now");
-		
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i+"");
-			Thread.sleep(2000);
-		}
+		ConsoleTextPane.getInstance().insertMessage("Stargazer System Online Now");
+		//ConsoleTextPane.getInstance().insertLogo();
+		//ConsoleTextPane.getInstance().insertMessage("Stargazer System Version 1.1.1");
+		//ConsoleTextPane.getInstance().insertLine();
 	}
 
 }

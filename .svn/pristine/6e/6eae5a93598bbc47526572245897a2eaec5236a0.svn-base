@@ -17,7 +17,7 @@ public class CombinationUserInterfaceStart {
 		for (int i = 0; i < 10; i++) {
 			LoadingJProgressBar.updateJProgressBar(i * 10);
 			LoadingProgressInfo.updateProgressInfo("  loading " + i + " Data");
-			Thread.sleep(2000);
+			Thread.sleep(200);
 		}
 
 		loadingFrame.unVisualLoadingFrame();
